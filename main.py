@@ -8,7 +8,7 @@ app = FastAPI()
 db = get_database("vendaval")
 #Añadir CORS
 origins = [
-    "https://enventual-frontend-rsa.vercel.app",
+    "https://vendaval-frontend.vercel.app",
     "http://localhost:3000",  # Origen permitido
     # Añade otros orígenes si es necesario
 ]
@@ -16,6 +16,7 @@ origins = [
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
+    allow_origin_regex=r"https://.*\.vercel\.app",
     allow_credentials=True,
     allow_methods=["*"],  # Permitir todos los métodos HTTP (GET, POST, etc.)
     allow_headers=["*"],  # Permitir todos los encabezados

@@ -1,11 +1,15 @@
+import os
 from pymongo import MongoClient
+from dotenv import load_dotenv
+
+load_dotenv()
 
 def get_database(dbName: str):
-    # URL de conexión, asegúrate de reemplazar <username>, <password>, <cluster-url> y <database-name> con los valores adecuados.
-    CONNECTION_STRING = "mongodb+srv://examUser:mongoUma@cluster0.xszfu.mongodb.net/?"
+    # Obtener la cadena de conexión desde la variable de entorno
+    CONNECTION_STRING = os.getenv("MONGO_URI")
 
-    # Crear una conexión usando MongoClient
+    if not CONNECTION_STRING:
+        raise ValueError("No se encontró la variable de entorno MONGO_URI")
+
     client = MongoClient(CONNECTION_STRING)
-
-    # Especificar la base de datos que se desea usar
     return client[dbName]

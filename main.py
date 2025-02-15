@@ -6,7 +6,6 @@ import os
 
 app = FastAPI()
 db = get_database("vendaval")
-dqeeee
 #Añadir CORS
 origins = [
     "https://vendaval-frontend.vercel.app",

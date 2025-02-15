@@ -1,7 +1,7 @@
 # routers/pujas.py
 from fastapi import APIRouter, HTTPException, Depends
 from db_connection import get_database
-from base_models.puja import Puja
+from schemas.puja import Puja
 
 router = APIRouter()
 
@@ -10,7 +10,7 @@ def get_collection():
     return db.get_collection("pujas")
 
 
-@router.post("/")
+@router.post("/", status_code=201)
 def realizar_puja(puja: Puja):
     collection = get_collection()
 

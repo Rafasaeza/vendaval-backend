@@ -1,7 +1,7 @@
 # routers/articulos.py
 from fastapi import APIRouter, HTTPException, Query
 from db_connection import get_database
-from base_models.articulo import Articulo
+from schemas.articulo import Articulo
 from typing import List
 from bson.objectid import ObjectId
 from pydantic import BaseModel
@@ -11,7 +11,7 @@ def get_collection():
     db = get_database("vendaval")
     return db.get_collection("articulos")
 
-@router.post("/")
+@router.post("/", status_code=201)
 def crear_articulo(articulo: Articulo):
     collection = get_collection()
     result = collection.insert_one(articulo.dict())

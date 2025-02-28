@@ -14,7 +14,7 @@ def get_settings():
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=get_settings().allowed_origins,
+    allow_origins=[get_settings().allowed_origin],
     #allow_origin_regex=origins,#r"https://.*\.vercel\.app",
     allow_credentials=True,
     allow_methods=["*"],  # Permitir todos los métodos HTTP (GET, POST, etc.)

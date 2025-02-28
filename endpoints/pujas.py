@@ -1,6 +1,6 @@
 # routers/pujas.py
 from fastapi import APIRouter, HTTPException, Depends
-from db_connection import get_database
+from db.db_connection import get_database
 from schemas.puja import Puja
 
 router = APIRouter()

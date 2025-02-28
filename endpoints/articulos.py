@@ -1,8 +1,7 @@
 # routers/articulos.py
 from fastapi import APIRouter, HTTPException, Query
-from db_connection import get_database
+from db.db_connection import get_database
 from schemas.articulo import Articulo
-from typing import List
 from bson.objectid import ObjectId
 from pydantic import BaseModel
 router = APIRouter()
